@@ -6,6 +6,7 @@ from logger import log_state
 def main():
     # Start the game
     pygame.init()
+    pygame.display.set_caption("Asteroids")
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     # Game loop
