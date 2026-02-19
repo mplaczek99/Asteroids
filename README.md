@@ -22,7 +22,5 @@ From the repo root:
 
 ## Notes
 
-- Screen dimensions are defined in `constants.py`:
-  - `SCREEN_WIDTH = 1280`
-  - `SCREEN_HEIGHT = 720`
-
+- Screen dimensions are defined in `constants.py`
+- `logger.py` exists to support Boot.dev test instrumentation
