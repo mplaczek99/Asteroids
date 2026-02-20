@@ -1,6 +1,8 @@
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+
+from constants import SCREEN_HEIGHT, SCREEN_WIDTH
 from logger import log_state
+from player import Player
 
 
 def main():
@@ -12,6 +14,9 @@ def main():
     # Time clock
     clock = pygame.time.Clock()
     dt = 0
+
+    # Spawn the player in the center
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     # Game loop
     while True:
@@ -27,8 +32,13 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        # Create a window
+        # Clear the window
         screen.fill("black")
+
+        # Draw the player
+        player.draw(screen)
+
+        # Present the window
         pygame.display.flip()
 
 
