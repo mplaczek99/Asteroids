@@ -26,6 +26,9 @@ def main():
         # Call the logger
         log_state()
 
+        # Update the player
+        player.update(dt)
+
         # Process event queue
         for event in pygame.event.get():
             # Exit the game if window is closed
