@@ -15,6 +15,13 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # Manage groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    # Add stuff to groups
+    Player.containers = (updatable, drawable)
+
     # Spawn the player in the center
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -26,8 +33,12 @@ def main():
         # Call the logger
         log_state()
 
-        # Update the player
-        player.update(dt)
+        # Update the update group
+        updatable.update(dt)
+
+        # Draw all objects in the drawable group
+        for object in drawable:
+            object.draw(screen)
 
         # Process event queue
         for event in pygame.event.get():
