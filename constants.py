@@ -4,7 +4,7 @@ SCREEN_HEIGHT = 720
 
 # Object variables
 LINE_WIDTH = 2
-SHOT_RADIUS = 5
+SHOT_WIDTH = 5
 
 # Player variables
 PLAYER_RADIUS = 20

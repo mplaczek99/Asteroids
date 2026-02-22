@@ -14,24 +14,22 @@ class Asteroid(CircleShape):
                            self.radius, LINE_WIDTH)
 
     def split(self):
-        # I think kill() must be at the end
-        self.kill()
         if self.radius <= ASTEROID_MIN_RADIUS:
+            self.kill()
             return  # This was a small asteroid
-        else:
-            log_event("asteroid_split")
 
-            new_angle = random.uniform(20.0, 50.0)
+        log_event("asteroid_split")
 
-            new_vector1 = self.velocity.rotate(new_angle)
-            new_vector2 = self.velocity.rotate(-new_angle)
-            new_radius = self.radius - ASTEROID_MIN_RADIUS
+        new_angle = random.uniform(20.0, 50.0)
+        new_radius = self.radius - ASTEROID_MIN_RADIUS
 
-            asteroid1 = Asteroid(self.position.x, self.position.y, new_radius)
-            asteroid2 = Asteroid(self.position.x, self.position.y, new_radius)
+        a1 = Asteroid(self.position.x, self.position.y, new_radius)
+        a2 = Asteroid(self.position.x, self.position.y, new_radius)
 
-            asteroid1.velocity = new_vector1 * 1.2
-            asteroid2.velocity = new_vector2 * 1.2
+        a1.velocity = self.velocity.rotate(new_angle) * 1.2
+        a2.velocity = self.velocity.rotate(-new_angle) * 1.2
+
+        self.kill()
 
     def update(self, dt):
         self.position += self.velocity * dt
